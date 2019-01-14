@@ -1,0 +1,143 @@
+﻿<!-- 
+    1. Создать объект Point, содержащий два свойства: "x" и "y" — координаты точки, и метод GetQuadrant, вычисляющий,
+       в каком квадранте в декартовой системе координат находится данная точка.
+       Протестируйте данный объект, изменяя значения его координат, и повторно вызавая метод GetQuadrant.
+    
+    2. Создать объект Calculator, который должен содержать методы для расчета суммы, разности, произведения и частного двух чисел.
+       Протестировать данный объект, принимая от пользователя значения двух операндов и знак операции.
+       В зависимости от принятого знака операции, вызвать соответствующий метод.
+
+    3. Создать массив, который будет хранить в себе информацию о сотрудниках предприятия. Каждый элемент масива — объект,
+       содержащий свойства: name, sName, age, occupation, и метод show, который выводит всю информацию о пользователе.
+       Реализовать заполнение массива пользователем. По окончанию заполнения — вывести информацию о сотрудниках.
+    
+    4. Для предыдущего задания создайте функцию, которая будет принимать в себя массив объектов-сотрудников, и каждому из объектов
+       будет добавлять новое свойство "salary", хранящее зарплату сотрудника. 
+       Зарплата расчитывается, исходя из значения свойства "occupation" следующим образом:
+           • "director" — 3000;
+           • "manager" — 1500;
+           • "programmer" — 2000;
+           • для остальных значений — 1000.
+       После выполнения функции — вывести информацию о сотрудниках.
+           
+    5. Для задания 3 создать метод, позволяющий отсортировать массив сотрудников по одному из свойств: name, sName, age, occupation, salary.
+       Параметр для сортировки принимается от пользователя.
+       После выполнения функции — вывести информацию о сотрудниках.
+
+     -->
+     <!DOCTYPE html>
+     <html xmlns="http://www.w3.org/1999/xhtml">
+     <head>
+      <title></title>
+      <script> 
+      //1 task
+      var Pointer = {
+         X: 1,
+         Y: 3,
+         GetQuadrant: function(){
+            if(Pointer.X == 0 || Pointer.Y == 0){
+               console.log("Лежит на оси");
+            } else if (Pointer.X > 0 || Pointer.Y > 0){
+               console.log("Лежит в 1 квадранте");
+            } else if (Pointer.X < 0 || Pointer.Y > 0){
+               console.log("Лежит в 2 квадранте");
+            } else if(Pointer.X < 0 || Pointer.Y < 0) {
+               console.log("Лежит в 3 квадранте");
+            } else {
+               console.log("Лежит в 4 квадранте");
+            }
+         }
+      };
+
+      Pointer.GetQuadrant();
+
+      // 2 task
+      // var Calculator = {
+      //    a: 0,
+      //    b: 0,
+      //    operand: "" ,
+      //    GetResult: function(){
+      //       if (Calculator.operand === "+"){
+      //          console.log(Calculator.a + Calculator.b);
+      //       }
+      //       if (Calculator.operand === "-"){
+      //          console.log(Calculator.a - Calculator.b);
+      //       }
+      //       if (Calculator.operand === "*"){
+      //          console.log(Calculator.a * Calculator.b);
+      //       }
+      //       if (Calculator.operand === "/"){
+      //          console.log(Calculator.a / Calculator.b);
+      //       }
+      //    }
+      // };
+      // Calculator.a  =+prompt("Введите число А");
+      // Calculator.b  =+prompt("Введите число В");
+      // Calculator.operand =prompt("Введи знак операции");
+      // Calculator.GetResult();
+
+      // 3 task
+      class Personals{
+         constructor(name, sName, age, occupation){
+            this.name = name;
+            this.sName = sName;
+            this.age = age;
+            this.occupation = occupation;
+         }
+         get show(){
+            return `${this.name} ${this.sName} ${this.age} ${this.occupation}`;          
+         }
+         arr(Arr, Name, Pos){
+            Arr.splice(Pos, 0, Name);
+         }
+         sort(param){
+            
+         }
+         add(){
+           if(this.occupation =="director"){
+            this.salary = 3000;
+           } else if(this.occupation =="manager"){
+            this.salary = 1500;
+           } else if(this.occupation =="programmer"){
+            this.salary = 2000;
+           } else {
+            this.salary = 1000;
+           }
+           
+           return `${this.name} ${this.sName} ${this.age} ${this.occupation} ${this.salary}`;  
+         }
+      };
+      
+      var Company = [];
+      
+      //Воодить данные от пользователя 
+      var name  =prompt("Введите имя: ");
+      var sName =prompt("Введите фамилию: ");
+      var age =+prompt("Введите возраст: ");
+      var occupation =prompt("Введите должность: ");
+      // Делаем обект людей
+      var personal = new Personals(name, sName, age, occupation);
+      console.log(personal.show);
+      // Определяем в масив указыываем масив, человека и иденкс в масиве
+      console.log("******");
+      personal.arr(Company, personal, 0);
+      // Проверям в масиве по  0 индексу
+      console.log("******");
+      console.log(Company[0]);
+      // Добавляем запралату в зависимости от должности
+      console.log("******");
+      console.log(personal.add());
+      // Ложим данные обновленные в масив по 0 индексу
+      personal.arr(Company, personal, 0);
+      console.log("******");
+      // Проверяем данные в масиве по 0 индексу
+      console.log(Company[0]);
+      
+
+      </script>
+
+    </head>
+    <body>
+
+    </body>
+    </html>
